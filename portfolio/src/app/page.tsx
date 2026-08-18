@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/Hero";
 import AboutSection from "@/components/About";
+import ProjectsSection from "@/components/Projects";
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
         <HeroSection />
 
         <AboutSection />
-        <section id="projects" style={{ minHeight: "100vh" }} />
+        <ProjectsSection />
         <section id="skills"   style={{ minHeight: "100vh", backgroundColor: "#0d0d0d" }} />
         <section id="journey"  style={{ minHeight: "100vh" }} />
         <section id="contact"  style={{ minHeight: "100vh", backgroundColor: "#0d0d0d" }} />

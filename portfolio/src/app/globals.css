@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ──────────────────────────────────────────────────────── */
+:root {
+  --orange: #f97316;
+  --orange-dark: #ea580c;
+  --bg: #0a0a0a;
+  --bg-secondary: #111111;
+  --text: #ffffff;
+  --text-muted: #a1a1aa;
+}
+
+/* ─── Tailwind v4 Theme Extension ────────────────────────────────────────── */
+@theme inline {
+  --color-orange: var(--orange);
+  --color-orange-dark: var(--orange-dark);
+  --color-bg-primary: var(--bg);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+}
+
+/* ─── Base Styles ────────────────────────────────────────────────────────── */
+html,
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+}
+
+/* ─── Hide Scrollbar Globally ────────────────────────────────────────────── */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE / Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome / Safari / Opera */
+}
+
+/* ─── Selection Color ────────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--orange);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: var(--orange);
+  color: #ffffff;
+}

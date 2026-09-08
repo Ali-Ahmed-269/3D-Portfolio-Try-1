@@ -66,7 +66,7 @@ const PROJECTS: Project[] = [
     image: "/images/file-compressor-project.png",
     tech: ["Next.js", "TypeScript"],
     tagColor: "green",
-    github: "",
+    github: "https://github.com/Ali-Ahmed-269",
   },
   {
     id: "isma-ims-portal",
@@ -84,7 +84,7 @@ const PROJECTS: Project[] = [
     image: "/images/PMS- project.png",
     tech: ["Next.js", "Supabase", "Vercel"],
     tagColor: "purple",
-    github: "",
+    github: "https://github.com/Ali-Ahmed-269",
   },
   {
     id: "tulip-project",
@@ -102,7 +102,7 @@ const PROJECTS: Project[] = [
     image: "/images/wordle-project.png",
     tech: ["Next.js", "Tailwind CSS"],
     tagColor: "yellow",
-    github: "",
+    github: "https://github.com/Ali-Ahmed-269",
   },
 ];
 

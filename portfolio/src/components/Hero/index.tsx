@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import ParticleBackground from "./ParticleBackground";
 
@@ -96,32 +95,7 @@ export default function HeroSection() {
       {/* ── 2. GRADIENT OVERLAY (z-[2]) ── */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/90 lg:via-[#0a0a0a]/80 to-transparent z-[2] pointer-events-none" />
 
-      {/* ── 3. GLOWING PHOTO CIRCLE CONTAINER (z-[3]) ── */}
-      <div className="absolute right-[10%] lg:right-[25%] top-[45%] -translate-y-1/2 w-[280px] h-[280px] sm:w-[420px] sm:h-[420px] z-[3] flex items-center justify-center">
-        {/* Glow Ring */}
-        <motion.div
-          className="absolute inset-0 rounded-full z-[4] pointer-events-none"
-          style={{
-            border: "2px solid rgba(249, 115, 22, 0.5)",
-            boxShadow: "0 0 80px #f97316, 0 0 160px #f9731650",
-          }}
-          animate={{ scale: [1, 1.03, 1] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        {/* Clipped circular portrait */}
-        <div className="relative w-full h-full rounded-full overflow-hidden z-[3] border border-white/10">
-          <Image
-            src="/hero.jpg"
-            alt="Ali Ahmed Khan"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-        </div>
-      </div>
-
-      {/* ── 4. MAIN CONTENT (z-[10]) ── */}
+      {/* ── 3. MAIN CONTENT (z-[10]) ── */}
       <div className="relative z-[10] flex flex-col justify-center min-h-screen px-6 sm:px-12 py-20 max-w-full lg:max-w-[55%]">
         <motion.div
           variants={containerVariants}

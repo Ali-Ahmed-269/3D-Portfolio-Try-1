@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 
 /* ─── Data ───────────────────────────────────────────────────────────────── */
 const NAV_LINKS = [
@@ -120,24 +120,23 @@ export default function TopNav() {
             <button
               type="button"
               onClick={() => setPhotoOpen(true)}
-              className="cursor-pointer ring-1 ring-transparent hover:ring-orange-500 transition-all"
+              className="cursor-pointer ring-1 ring-transparent hover:ring-orange-500 transition-all rounded-full overflow-hidden shrink-0 flex items-center justify-center p-0"
               style={{
                 width: "2rem",
                 height: "2rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
                 border: "1.5px solid #f97316",
-                color: "#f97316",
-                borderRadius: "6px",
-                fontFamily: "'Space Grotesk', sans-serif",
-                fontWeight: 700,
-                fontSize: "0.875rem",
                 flexShrink: 0,
                 background: "transparent",
               }}
+              aria-label="View profile picture modal"
             >
-              A
+              <Image
+                src="/hero.jpg"
+                alt="Ali Khan"
+                width={32}
+                height={32}
+                className="w-full h-full object-cover rounded-full"
+              />
             </button>
             <motion.a
               href="#home"
@@ -257,28 +256,44 @@ export default function TopNav() {
       </motion.header>
 
       {/* ── Photo Lightbox Modal ── */}
-      {photoOpen && (
-        <div
-          className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center cursor-pointer"
-          onClick={() => setPhotoOpen(false)}
-        >
-          <div className="relative" onClick={(e) => e.stopPropagation()}>
-            <Image
-              src="/hero.jpg"
-              alt="Ali Ahmed Khan"
-              width={400}
-              height={530}
-              className="rounded-2xl shadow-2xl border border-white/10"
-            />
-            <button
-              onClick={() => setPhotoOpen(false)}
-              className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-orange-500 text-white text-sm flex items-center justify-center hover:bg-orange-600 cursor-pointer"
+      <AnimatePresence>
+        {photoOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-center justify-center p-4 cursor-pointer"
+            onClick={() => setPhotoOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative max-w-md w-full flex items-center justify-center cursor-default"
+              onClick={(e) => e.stopPropagation()}
             >
-              ✕
-            </button>
-          </div>
-        </div>
-      )}
+              <Image
+                src="/hero.jpg"
+                alt="Ali Khan"
+                width={400}
+                height={530}
+                className="rounded-2xl shadow-2xl border border-white/10 max-h-[80vh] w-auto h-auto object-cover select-none"
+              />
+              <button
+                type="button"
+                onClick={() => setPhotoOpen(false)}
+                className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-orange-500 text-white text-sm font-bold flex items-center justify-center hover:bg-orange-600 cursor-pointer shadow-lg transition-colors"
+                aria-label="Close"
+              >
+                ✕
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
+

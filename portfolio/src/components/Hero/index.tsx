@@ -3,6 +3,7 @@
 import { motion, Variants } from "framer-motion";
 import { useEffect, useState } from "react";
 import ParticleBackground from "./ParticleBackground";
+import SaturnPlanet from "./SaturnPlanet";
 
 /* ─── Type definitions ───────────────────────────────────────────────────── */
 interface StatItem {
@@ -92,8 +93,17 @@ export default function HeroSection() {
       {/* ── 1. PARTICLE BACKGROUND (z-0) ── */}
       <ParticleBackground />
 
-      {/* ── 2. GRADIENT OVERLAY (z-[2]) ── */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/90 lg:via-[#0a0a0a]/80 to-transparent z-[2] pointer-events-none" />
+      {/* ── 2. UNIFIED ATMOSPHERIC OVERLAY (z-[2]) ── */}
+      <div
+        className="absolute inset-0 z-[2] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at 55% 50%, rgba(249, 115, 22, 0.05) 0%, rgba(10, 10, 10, 0.25) 50%, rgba(10, 10, 10, 0.6) 100%)",
+        }}
+      />
+
+      {/* ── 3. SATURN PLANET ILLUSTRATION (z-[4]) ── */}
+      <SaturnPlanet />
 
       {/* ── 3. MAIN CONTENT (z-[10]) ── */}
       <div className="relative z-[10] flex flex-col justify-center min-h-screen px-6 sm:px-12 py-20 max-w-full lg:max-w-[55%]">
